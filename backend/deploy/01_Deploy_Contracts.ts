@@ -6,18 +6,15 @@ const deployFunction: DeployFunction = async ({ getNamedAccounts, deployments })
     const { deploy, log } = deployments;
     const { deployer } = await getNamedAccounts();
     const developmentChains: string[] = ["hardhat", "localhost"];
-    const VERIFICATION_BLOCK_CONFIRMATIONS = 6;
     const chainId: number | undefined = network.config.chainId;
     if (!chainId) return;
 
-    const waitConfirmations: number = developmentChains.includes(network.name)
-        ? 1
-        : VERIFICATION_BLOCK_CONFIRMATIONS;
+    const waitConfirmations: number = developmentChains.includes(network.name) ? 1 : 6;
 
     log("-----------------------------------------------------------");
     log("deploying......");
 
-    const easyPe = await deploy("EasyPe", {
+    const contract = await deploy("Contract", {
         from: deployer,
         log: true,
         args: [],
@@ -25,7 +22,7 @@ const deployFunction: DeployFunction = async ({ getNamedAccounts, deployments })
     });
 
     if (!developmentChains.includes(network.name)) {
-        await verify(easyPe.address, []);
+        await verify(contract.address, []);
     }
 };
 

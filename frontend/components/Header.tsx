@@ -5,7 +5,7 @@ export default function Header(): JSX.Element {
     return (
         <nav className="p-4 border-b-2 flex flex-row">
             <h1 className="px-5 text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-cyan-400">
-                EasyPe
+                Frontend
             </h1>
             <div className="flex flex-row justify-between absolute top-0 right-10 items-center">
                 <Link href="/">
