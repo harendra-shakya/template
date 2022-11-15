@@ -15,7 +15,7 @@ export default function Home(): JSX.Element {
                             <Main />
                         </div>
                     ) : (
-                        <div>Plz Switch to a Supported network {supportedNetworks}</div>
+                        <div>Plz Switch to a Supported network: {supportedNetworks.join(", ")}</div>
                     )}
                 </div>
             ) : (
